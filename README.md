@@ -1,31 +1,24 @@
-# INFO4 CPOO project
+# BuzzChat project
 
-This is the base project your team **MUST** FORK to implement its version of the instant messaging app.
+Welcome. This is BuzzChat, an instant messaging app that I've worked on this year. Enjoy your visit! 
 
 ## Server
 
-The server is a Spring Boot app that must be located in the /server directory.
-An embryo allowing to receive and send messages to other domains is provided.
+The server is a Spring Boot app that allows receiving and sending messages to other domains.
 
 ## Client
 
-The client is an Angular Web app that must be located directly under the /client directory.
+The client is an Angular Web app that provides a UI.
 
 ## API and end-to-end tests
 
-The /api/serverapi.yml file must contain the OpenAPI specification of the server API.
-The /api/e2etests must contain Java end-to-end test code of the server API (generated using OpenAPI code generator).
-
-## Mockups
-
-The "static" mockup of the UI (images, HTML files...) must be delivered in the /client/mockups directory.
-
-The "actionable" mockup must be delivered directly under the /client directory as an angular app embryo.
+The /api/serverapi.yml file contains the OpenAPI specification of the server API.
+The /api/e2etests contains Java end-to-end test code of the server API.
 
 ## Router
 
 The message router is a Spring Boot app located in the /router directory.
-Your server will use it to send and receive messages.
+The server uses it to send and receive messages.
 It is deployed at https://cpoo-router.mightycode.tech/.
 
-**This code is provided for information, you don't actually need it to implement your the project.**
+**You can directly access the application at the link provided in the Resume**
