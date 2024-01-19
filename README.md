@@ -4,7 +4,7 @@ Welcome. This is BuzzChat, an instant messaging app that I've worked on this yea
 
 ## Server
 
-The server is a Spring Boot app that allows receiving and sending messages to other domains.
+The server is a Spring Boot app that allows receiving and sending messages to other domains. It uses the Server-Sent-Events technique to provide a fast message delivery.
 
 ## Client
 
