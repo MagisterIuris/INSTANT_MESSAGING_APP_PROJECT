@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1a1decd7-2a78-4877-b017-384b1434aa79" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="e2etests" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="e2etests" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2apKafgU3PpfWeIDxjuh29uc3kV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/aymenf/cpoo_final_sse/cpoo-menfaa-doaif/client/src/app",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "spring.configuration.checksum": "0b698033febdcf2a28d146e27fd10bcb",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/java/org/openapitools/client/api" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.SseEmitterTest">
+    <configuration name="NewMessageDTOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="openapi-java-client" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.openapitools.client.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.openapitools.client.model" />
+      <option name="MAIN_CLASS_NAME" value="org.openapitools.client.model.NewMessageDTOTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ResponseEntityTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="openapi-java-client" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.openapitools.client.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.openapitools.client.model" />
+      <option name="MAIN_CLASS_NAME" value="org.openapitools.client.model.ResponseEntityTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SseEmitterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="openapi-java-client" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.openapitools.client.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.openapitools.client.model" />
+      <option name="MAIN_CLASS_NAME" value="org.openapitools.client.model.SseEmitterTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserCredentialsDTOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="openapi-java-client" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.openapitools.client.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.openapitools.client.model" />
+      <option name="MAIN_CLASS_NAME" value="org.openapitools.client.model.UserCredentialsDTOTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserProfileDTOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="openapi-java-client" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.openapitools.client.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.openapitools.client.model" />
+      <option name="MAIN_CLASS_NAME" value="org.openapitools.client.model.UserProfileDTOTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.SseEmitterTest" />
+        <item itemvalue="JUnit.UserProfileDTOTest" />
+        <item itemvalue="JUnit.UserCredentialsDTOTest" />
+        <item itemvalue="JUnit.ResponseEntityTest" />
+        <item itemvalue="JUnit.NewMessageDTOTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1a1decd7-2a78-4877-b017-384b1434aa79" name="Changes" comment="" />
+      <created>1705010145919</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1705010145919</updated>
+      <workItem from="1705010147029" duration="73000" />
+      <workItem from="1705010637241" duration="170000" />
+      <workItem from="1705013741178" duration="1159000" />
+      <workItem from="1705014908541" duration="1763000" />
+      <workItem from="1705057589260" duration="3110000" />
+      <workItem from="1705063582679" duration="2082000" />
+      <workItem from="1705065675199" duration="122000" />
+      <workItem from="1705065806877" duration="271000" />
+      <workItem from="1705066087396" duration="126000" />
+      <workItem from="1705066223028" duration="2526000" />
+      <workItem from="1705069501897" duration="270000" />
+      <workItem from="1705069783191" duration="9691000" />
+      <workItem from="1705081352057" duration="33000" />
+      <workItem from="1705081390762" duration="409000" />
+      <workItem from="1705093412708" duration="1035000" />
+      <workItem from="1705095294084" duration="2456000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

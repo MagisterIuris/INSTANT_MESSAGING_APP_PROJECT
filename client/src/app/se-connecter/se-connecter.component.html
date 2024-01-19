@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page d'inscription</title>
+</head>
+<body style="background-color:#FFF7EA;">
+<div class="centre-tout">
+  <mat-card class="carre-centre">
+    <img src="../assets/abeille.png" width="130" height="130" alt="Huge-Bee" class="Huge-Bee"/>
+    <mat-card-title class="texte">{{title}}</mat-card-title>
+    <div>
+      <input type="text" name="username" placeholder="Username or email" [(ngModel)]="loginData.login" required>
+    </div>
+
+    <div>
+      <input type="password" name="password" placeholder="Password" [(ngModel)]="loginData.password" required
+             (keyup.enter)="loginButton()">
+    </div>
+
+    <button mat-button (click)="loginButton()">Log In</button>
+    <p class="texte_dessous" routerLink="/inscription">Sign up for Buzz !</p>
+
+    <div *ngFor="let bee of bees; let i = index" [attr.id]="'bee-' + i">
+      <img [src]="bee.src" [style.transform]="'rotate(' + bee.rotation + 'deg)'" alt="bzzzzz"/>
+    </div>
+  </mat-card>
+</div>
+</body>
+</html>

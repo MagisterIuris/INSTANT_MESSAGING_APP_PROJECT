@@ -1,0 +1,27 @@
+import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { FormsModule } from "@angular/forms";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { InscriptionComponent } from "./inscription.component";
+
+describe("InscriptionComponent", () => {
+  let component: InscriptionComponent;
+  let fixture: ComponentFixture<InscriptionComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [InscriptionComponent],
+      imports: [HttpClientTestingModule, FormsModule, MatSnackBarModule],
+    }).compileComponents();
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(InscriptionComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it("should create", () => {
+    expect(component).toBeTruthy();
+  });
+});

@@ -1,0 +1,22 @@
+# MacOS X files
+**.DS_Store
+
+# IntelliJ IDEA
+**/.idea/
+**/*.iml
+**/.run/
+
+# Maven files
+**/target/
+
+# Emacs temp files
+**~
+**.~
+
+# Log files
+logs/
+**/*.log
+
+# H2 database
+/cpoo.mv.db
+/cpoo.trace.db

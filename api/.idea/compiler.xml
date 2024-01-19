@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="e2etests" target="1.8" />
+      <module name="e2etests.main" target="1.8" />
+      <module name="e2etests.test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="e2etests" options="-Xlint:all -J-Xss4m" />
+    </option>
+  </component>
+</project>

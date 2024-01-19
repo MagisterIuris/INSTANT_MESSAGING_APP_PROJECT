@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page d'inscription</title>
+</head>
+<body [ngClass]="{'dark-mode': themeService.isDarkTheme()}">
+<div class="centered-card" style="background-color: #FFF7EA;" [ngClass]="{'dark-mode': themeService.isDarkTheme()}">
+  <mat-sidenav-container class="full-height" style="background-color:#FFF7EA;"
+                         [ngClass]="{'dark-mode-text': themeService.isDarkTheme()}">
+    <mat-sidenav mode="side" opened class="sidenav" style="background-color:#FFF7EA;">
+      <div class="header-container" [ngClass]="{'dark-mode': themeService.isDarkTheme()}">
+        <div class="header" [ngClass]="{'dark-mode': themeService.isDarkTheme()}">
+          <div class="profile-image-container1">
+            <img src="assets/Ellipse 75.svg" class="profile-image" alt="image utilisateur principal">
+          </div>
+          <button class="online-button" (click)="changerEtatConnexion()"
+                  [ngClass]="{'dark-mode-text': themeService.isDarkTheme()}">
+            {{ estEnLigne ? 'online' : 'offline' }}
+          </button>
+          <mat-icon style="margin-top: 4.5%; cursor: pointer; margin-left:90%" [routerLink]="['/page-parametres']">
+            settings
+          </mat-icon>
+        </div>
+        <div class="search-bar">
+          <mat-icon>search</mat-icon>
+          <input matinput [(ngModel)]="filterConv" placeholder="Recherche..." class="placeholder-text"
+                 [ngClass]="{'dark-mode-text': themeService.isDarkTheme()}">
+          <button mat-raised-button class="custom-button" (click)="openDialog()">+</button>
+        </div>
+      </div>
+      <div class="lists-container"
+           [ngClass]="{'dark-mode': themeService.isDarkTheme(), 'dynamic-height-container': numberOfConversations > 10}">
+        <ul>
+          <ng-container *ngFor="let conversation2 of conversations2">
+            <ng-container *ngIf="conversation2.to.toLowerCase().includes(filterConv.toLowerCase())">
+              <ng-container *ngIf="conversation2.from === userLogin || conversation2.to === userLogin">
+                <li class="item">
+                  <div class="profile-image-container">
+                    <img src="assets/Ellipse 75.svg" class="profile-image-list" alt="image conversation">
+                    <div class="first-letter">{{ conversation2.to.charAt(0).toLowerCase() }}</div>
+                  </div>
+
+                  <div tabindex="0"
+                       [ngClass]="{'clickable-item': !conversation2.unread, 'clickable-item-unread': conversation2.unread}"
+                       (click)="onItemClick2($event, conversation2); getAllMessConvButton()"
+                       (keyup.enter)="onItemClick2($event, conversation2)"
+                       (keyup.space)="onItemClick2($event, conversation2)">
+                    <ng-container *ngIf="conversation2.to !== userLogin; else fromContent">
+                      {{conversation2.to}}
+                    </ng-container>
+                    <ng-template #fromContent>
+                      {{conversation2.from}}
+                    </ng-template>
+                    <div class="last-message" *ngIf="conversation2.lastMessage">
+                      {{ conversation2.lastMessage.length > 4 ? conversation2.lastMessage.substring(0, 4) + '...' : conversation2.lastMessage }}
+                      <span class="last-message-time">
+                                    {{ conversation2.timestamp | date:'short' }}
+                                  </span>
+                    </div>
+                  </div>
+                </li>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </ul>
+      </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content [ngClass]="{'dark-mode': themeService.isDarkTheme()}">
+      <div class="conversation-content" [ngClass]="{'active-conversation': conversationActive2}">
+        <div class="conversation-window" #conversationWindow>
+          <div class="loader" *ngIf="!conversationActive2">
+            <div class="loader__element">
+              <img src="assets/bee.png" alt="Bee">
+            </div>
+            <div class="loader__element">
+              <img src="assets/bee.png" alt="Bee">
+            </div>
+            <div class="loader__element">
+              <img src="assets/bee.png" alt="Bee">
+            </div>
+          </div>
+
+          <div *ngFor="let message of messages" [ngClass]="{'sent-message': message.from === userLogin2 || message.from === userLogin,
+                        'received-message': message.from !== userLogin && message.from !== userLogin2}">
+            <div [ngClass]="{'sent': message.from === userLogin2 || message.from === userLogin,
+                          'received': message.from !== userLogin && message.from !== userLogin2}">
+              <div>
+                {{ message.body }}
+              </div>
+              <div class="timestamp-container">
+                <span class="timestamp">{{ message.timestamp | date: 'short' }}</span>
+              </div>
+            </div>
+
+            <div class="interaction-symbol">
+              <ng-container *ngIf="isBuzzchatDomain(conversationActive2.to)">
+                <button mat-icon-button (click)="toggleAction(message)">
+                  {{ message.showEmojis || message.showDelete ? '-' : '+' }}
+                </button>
+                <button mat-icon-button (click)="deleteMessage(message.id)" *ngIf="message.showDelete">🗑️</button>
+                <div class="emoji-panel" *ngIf="message.showEmojis">
+                  <button mat-icon-button (click)="addReaction(message.id, 'like')">👍</button>
+                  <button mat-icon-button (click)="addReaction(message.id, 'unlike')">👎</button>
+                  <button mat-icon-button (click)="addReaction(message.id, 'love')">❤️️</button>
+                  <button mat-icon-button (click)="addReaction(message.id, 'laugh')">😂</button>
+                </div>
+
+                <div class="selected-emojis">
+                  <div class="emoji-bubble" *ngIf="message.selectedEmoji">
+                    <span *ngIf="message.selectedEmoji === 'like'" tabindex="0" (click)="cancelEmoji(message.id)"
+                          (keyup.enter)="cancelEmoji(message.id)" (keyup.space)="cancelEmoji(message.id)">👍</span>
+                    <span *ngIf="message.selectedEmoji === 'unlike'" tabindex="0" (click)="cancelEmoji(message.id)"
+                          (keyup.enter)="cancelEmoji(message.id)" (keyup.space)="cancelEmoji(message.id)">👎</span>
+                    <span *ngIf="message.selectedEmoji === 'love'" tabindex="0" (click)="cancelEmoji(message.id)"
+                          (keyup.enter)="cancelEmoji(message.id)" (keyup.space)="cancelEmoji(message.id)">❤️️</span>
+                    <span *ngIf="message.selectedEmoji === 'laugh'" tabindex="0" (click)="cancelEmoji(message.id)"
+                          (keyup.enter)="cancelEmoji(message.id)" (keyup.space)="cancelEmoji(message.id)">😂</span>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+
+        <div class="recipient-info" *ngIf="conversationActive2">
+          <div class="profile-image-container">
+            <img src="assets/Ellipse 75.svg" class="profile-image-list" alt="recipient image">
+            <div class="first-letter">{{ conversationActive2.to.charAt(0).toLowerCase() }}</div>
+          </div>
+          <div class="recipient-details">
+            <ng-container *ngIf="conversationActive2.to !== userLogin; else fromContent">
+              {{conversationActive2.to}}
+            </ng-container>
+            <ng-template #fromContent>
+              {{conversationActive2.from}}
+            </ng-template>
+            <span *ngIf="isBuzzchatDomain(conversationActive2.to)" class="recipient-status"
+                  [ngClass]="{'online': this.destestEnLigne, 'offline': !this.destestEnLigne}">
+                                {{ this.destestEnLigne ? 'online' : 'offline' }}
+                            </span>
+
+          </div>
+        </div>
+
+        <div *ngIf="afficherChampMessage">
+          <div class="message-input">
+            <input [(ngModel)]="messageData.body" type="text" placeholder="Écrire un message" class="placeholder-text2"
+                   (keyup.enter)="sendButton()">
+            <button mat-raised-button class="button-envoyer" (click)="sendButton()">Envoyer</button>
+          </div>
+        </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+</body>
+</html>

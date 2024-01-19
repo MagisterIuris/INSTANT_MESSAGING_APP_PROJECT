@@ -1,0 +1,539 @@
+openapi: 3.0.3
+info:
+  contact:
+    email: aymane.menfaa@insa-rennes.fr
+  description: Instant Messaging App server API
+  title: Buzzchat server API
+  version: 1.0.0
+servers:
+- url: http://localhost:8080/
+security:
+- CookieAuth: []
+tags:
+- description: Authentication endpoints.
+  name: authentication
+- description: Conversation management endpoints.
+  name: conversation
+- description: Message management endpoints.
+  name: message
+- description: User management endpoints.
+  name: user
+- description: SSE endpoint.
+  name: sse
+paths:
+  /conversation/addConversation:
+    post:
+      operationId: addConversation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserProfileDTO'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationDisplayDTO'
+          description: OK
+      summary: Create a new conversation
+      tags:
+      - conversation
+      x-content-type: application/json
+      x-accepts: application/json
+  /conversation/getAllConversationsOfUser:
+    get:
+      operationId: getAllConversationsOfUser
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+          description: OK
+      summary: Get all conversations of the current user
+      tags:
+      - conversation
+      x-accepts: application/json
+  /message:
+    post:
+      operationId: messagePost
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewMessageDTO'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageDTO'
+          description: OK
+      summary: Create a new message
+      tags:
+      - message
+      x-content-type: application/json
+      x-accepts: application/json
+  /message/getAllMessagesOfConversation:
+    post:
+      operationId: getAllMessagesOfConversation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserProfileDTO'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+          description: OK
+      summary: Get all messages of a conversation
+      tags:
+      - message
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /message/getLastMessageOfConversation:
+    post:
+      operationId: getLastMessageOfConversation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserProfileDTO'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+          description: OK
+      summary: Get the last messages of a conversation
+      tags:
+      - message
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /message/{messageId}/reactions/{reaction}:
+    post:
+      operationId: addReaction
+      parameters:
+      - explode: false
+        in: path
+        name: messageId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: reaction
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+          description: OK
+      summary: Add reaction to a message
+      tags:
+      - message
+      x-accepts: '*/*'
+  /message/{messageId}/reactions:
+    delete:
+      operationId: removeReaction
+      parameters:
+      - explode: false
+        in: path
+        name: messageId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+          description: OK
+      summary: Remove reaction from a message
+      tags:
+      - message
+      x-accepts: '*/*'
+    get:
+      operationId: getReaction
+      parameters:
+      - explode: false
+        in: path
+        name: messageId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+          description: OK
+      summary: Get reactions of a message
+      tags:
+      - message
+      x-accepts: '*/*'
+  /message/{messageId}:
+    delete:
+      operationId: deleteMessage
+      parameters:
+      - explode: false
+        in: path
+        name: messageId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+          description: OK
+      summary: Delete a message
+      tags:
+      - message
+      x-accepts: '*/*'
+  /user/signup:
+    post:
+      operationId: signup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCredentialsDTO'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+          description: OK
+      summary: Sign up a new user
+      tags:
+      - authentication
+      x-content-type: application/json
+      x-accepts: application/json
+  /user/signin:
+    post:
+      operationId: signin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCredentialsDTO'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+          description: OK
+      summary: Sign in a user
+      tags:
+      - authentication
+      x-content-type: application/json
+      x-accepts: application/json
+  /user/username:
+    get:
+      operationId: getUserName
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: string
+          description: OK
+      summary: Get the username of the current user
+      tags:
+      - user
+      x-accepts: '*/*'
+  /user/profile:
+    get:
+      operationId: profile
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfileDTO'
+          description: OK
+      summary: Get the profile of the current user
+      tags:
+      - user
+      x-accepts: application/json
+  /user/signout:
+    post:
+      operationId: signout
+      responses:
+        "200":
+          description: OK
+      summary: Sign out the current user
+      tags:
+      - authentication
+      x-accepts: application/json
+  /user/{login}:
+    delete:
+      operationId: delete
+      parameters:
+      - explode: false
+        in: path
+        name: login
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: OK
+      summary: Delete a user
+      tags:
+      - user
+      x-accepts: application/json
+  /user/is-authenticated:
+    get:
+      operationId: isAuthenticated
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: boolean
+          description: OK
+      summary: Check if the user is authenticated
+      tags:
+      - authentication
+      x-accepts: application/json
+  /user/{login}/status/{status}:
+    put:
+      operationId: updateStatus
+      parameters:
+      - explode: false
+        in: path
+        name: login
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: status
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+      summary: Update user status
+      tags:
+      - user
+      x-accepts: application/json
+  /user/{login}/status:
+    get:
+      operationId: getUserStatus
+      parameters:
+      - explode: false
+        in: path
+        name: login
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: string
+          description: OK
+      summary: Get user status
+      tags:
+      - user
+      x-accepts: '*/*'
+  /sse/stream:
+    get:
+      operationId: subscribeToSSEEvents
+      responses:
+        "200":
+          content:
+            text/event-stream:
+              schema:
+                $ref: '#/components/schemas/SseEmitter'
+          description: OK
+      summary: GET sse/stream
+      tags:
+      - sse
+      x-accepts: text/event-stream
+components:
+  schemas:
+    SseEmitter:
+      properties:
+        timeout:
+          format: int64
+          type: integer
+      type: object
+    ConversationDisplayDTO:
+      example:
+        lastMessage: lastMessage
+        from: from
+        id: id
+        to: to
+        picture: picture
+        timestamp: 0
+      properties:
+        id:
+          type: string
+        from:
+          type: string
+        to:
+          type: string
+        picture:
+          type: string
+        lastMessage:
+          type: string
+        timestamp:
+          format: int64
+          type: integer
+      type: object
+    NewMessageDTO:
+      example:
+        to: to
+        type: type
+        body: body
+      properties:
+        to:
+          type: string
+        type:
+          type: string
+        body:
+          type: string
+      type: object
+    MessageDTO:
+      example:
+        from: from
+        to: to
+        type: type
+        body: body
+        timestamp: 0
+      properties:
+        timestamp:
+          format: int64
+          type: integer
+        from:
+          type: string
+        to:
+          type: string
+        type:
+          type: string
+        body:
+          type: string
+      type: object
+    UserCredentialsDTO:
+      example:
+        dateDeNaissance: dateDeNaissance
+        password: password
+        photo: photo
+        login: login
+        nom: nom
+        prenom: prenom
+        email: email
+      properties:
+        login:
+          type: string
+        password:
+          type: string
+        email:
+          type: string
+        nom:
+          type: string
+        prenom:
+          type: string
+        dateDeNaissance:
+          type: string
+        photo:
+          type: string
+      type: object
+    Message:
+      properties:
+        id:
+          type: string
+        timestamp:
+          format: int64
+          type: integer
+        from:
+          type: string
+        to:
+          type: string
+        type:
+          type: string
+        body:
+          type: string
+      type: object
+    UserProfileDTO:
+      example:
+        login: login
+      properties:
+        login:
+          type: string
+      type: object
+    ResponseEntity:
+      example:
+        headers: "{}"
+        message: message
+      properties:
+        headers:
+          properties: {}
+          type: object
+        message:
+          type: string
+      type: object
+    HttpHeaders:
+      properties: {}
+      type: object
+    Object:
+      properties: {}
+      type: object
+  securitySchemes:
+    CookieAuth:
+      description: Use a session cookie to authenticate (see /signin).
+      in: cookie
+      name: JSESSIONID
+      type: apiKey
+x-samples-languages:
+- curl
+- javascript
+- node
+- java
+- python
+- php
+
