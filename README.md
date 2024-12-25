@@ -1,6 +1,6 @@
 # BuzzChat project
 
-Welcome. This is BuzzChat, an instant messaging app that I've worked on this year. Enjoy your visit! 
+Welcome. This is BuzzChat, an instant messaging app that I've worked on last year. Enjoy your visit! 
 
 ## Server
 
